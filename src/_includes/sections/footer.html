@@ -2,67 +2,69 @@
 <!--                   Footer                     -->
 <!-- ============================================ -->
 
-<footer id="cs-footer-275" style="padding: 4rem 1rem 3rem 1rem; background-color: #000; border-top: 1px solid #111;">
-    <div class="cs-container" style="width: 100%; max-width: 80rem; margin: auto; display: flex; flex-wrap: wrap; gap: 4rem; justify-content: space-between;">
+<footer id="cs-footer-minimal" style="background: #0a0a0a; border-top: 3px solid var(--primary); padding: 4rem 1rem 2rem 1rem; text-align: center;">
+    <style>
+        /* Import Luxury Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        .footer-nav-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+        .footer-nav-link { color: #fff; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s; font-weight: 500;}
+        .footer-nav-link:hover { color: var(--primary); }
+
+        .footer-contact-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2rem;}
+        .footer-contact-link { color: #888; text-decoration: none; transition: color 0.3s; }
+        .footer-contact-link:hover { color: #fff; }
+        .footer-contact-highlight { color: var(--primary); font-weight: 600; text-decoration: none; }
         
-        <div class="cs-logo-group" style="max-width: 25rem;">
-            <!-- Image Logo Replaces Text Logo -->
-            <a aria-label="go back to home" class="cs-logo" href="/" style="text-decoration: none; display: flex; align-items: center; margin-bottom: 1.5rem;">
-                <img class="cs-logo-light" src="/assets/images/deep2.png" alt="Vitesse Logo" style="height: 28px; width: auto; display: none !important; margin: 0; padding: 0; object-fit: contain;">
-                <img class="cs-logo-dark" src="/assets/images/deep1.png" alt="Vitesse Logo" style="height: 28px; width: auto; margin: 0; padding: 0; display: block; object-fit: contain;">
-            </a>
-            <p class="cs-text" style="color: #888; font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem;">
-                High-end visual production studio based in Southern California. Specializing in vehicle-to-vehicle tracking and commercial cinematography.
-            </p>
-            <div class="cs-social" style="display: flex; gap: 1rem;">
-                <a class="cs-social-link" aria-label="visit instagram profile" href="https://instagram.com/vitesse.vx" target="_blank" rel="noopener" style="width: 2rem; height: 2rem; background: #222; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
-                    <img class="cs-social-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/instagram.svg" alt="instagram" width="14" height="14">
-                </a>
-                <a class="cs-social-link" aria-label="visit youtube channel" href="https://youtube.com/@vitessevx" target="_blank" rel="noopener" style="width: 2rem; height: 2rem; background: #222; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; transition: background 0.3s;">
-                    <span style="color: #fff; font-size: 0.7rem; font-weight: 800;">YT</span>
-                </a>
+        .footer-divider { color: #333; }
+    </style>
+
+    <div style="max-width: 80rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 2.5rem;">
+        
+        <!-- Center Logo -->
+        <a href="/" style="text-decoration: none; display: flex; flex-direction: column; align-items: center;">
+            <span style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: #fff; letter-spacing: 0.08em; font-weight: 400; line-height: 0.8;">MACH <span style="color: var(--primary); font-weight: 500;">ONE</span></span>
+            <span style="font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 0.4em; display: block; margin-top: 0.5rem; font-weight: 500;">Air Charters, Inc.</span>
+        </a>
+
+        <!-- Horizontal Navigation -->
+        <nav style="width: 100%;">
+            <ul class="footer-nav-list">
+                <li><a href="/" class="footer-nav-link">Home</a></li>
+                <li><a href="/#intro-block" class="footer-nav-link">About Us</a></li>
+                <li><a href="/#services" class="footer-nav-link">Services</a></li>
+                <li><a href="/#revenue" class="footer-nav-link">Management</a></li>
+                <li><a href="/#sales-banner" class="footer-nav-link">Acquisitions</a></li>
+                <li><a href="/contact/" class="footer-nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Horizontal Contact Info & Badges -->
+        <div class="footer-contact-row">
+            <a href="tel:19095978461" class="footer-contact-highlight">+(1) 909-597-8461</a>
+            <span class="footer-divider">|</span>
+            <a href="mailto:info@moaci.com" class="footer-contact-link">INFO@MOACI.COM</a>
+            <span class="footer-divider">|</span>
+            <span>CHINO AIRPORT - HANGAR F7</span>
+            <span class="footer-divider" style="margin-left: 1rem; margin-right: 1rem;">|</span>
+            <div style="display: flex; gap: 0.75rem;">
+                <span style="font-size: 0.6rem; color: var(--primary); border: 1px solid rgba(197, 160, 89, 0.3); padding: 0.3rem 0.6rem; font-weight: 600;">ARGUS GOLD</span>
+                <span style="font-size: 0.6rem; color: var(--primary); border: 1px solid rgba(197, 160, 89, 0.3); padding: 0.3rem 0.6rem; font-weight: 600;">WYVERN</span>
             </div>
         </div>
-        
-        <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
-            <ul class="cs-nav" style="padding: 0; margin: 0;">
-                <li class="cs-nav-li" style="list-style: none; margin-bottom: 1rem;">
-                    <span class="cs-header" style="font-family: var(--headerFont); font-size: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; display: block; padding-bottom: 1rem; border-bottom: 1px solid #222; margin-bottom: 1rem;">Navigation</span>
-                </li>
-                <li class="cs-nav-li" style="list-style: none; margin-bottom: 0.75rem;">
-                    <a class="cs-nav-link" href="/" style="color: #aaa; text-decoration: none; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Home</a>
-                </li>
-                <li class="cs-nav-li" style="list-style: none; margin-bottom: 0.75rem;">
-                    <a class="cs-nav-link" href="/portfolio/" style="color: #aaa; text-decoration: none; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">The Archive</a>
-                </li>
-                <li class="cs-nav-li" style="list-style: none; margin-bottom: 0.75rem;">
-                    <a class="cs-nav-link" href="/studio/" style="color: #aaa; text-decoration: none; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Studio</a>
-                </li>
-            </ul>
-            
-            <ul class="cs-contact" style="padding: 0; margin: 0;">
-                <li class="cs-nav-li" style="list-style: none; margin-bottom: 1rem;">
-                    <span class="cs-header" style="font-family: var(--headerFont); font-size: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; display: block; padding-bottom: 1rem; border-bottom: 1px solid #222; margin-bottom: 1rem;">Contact</span>
-                </li>
-                <li class="cs-contact-li" style="list-style: none; margin-bottom: 0.75rem;">
-                    <a class="cs-contact-link" href="/contact/" style="color: #aaa; text-decoration: none; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Book a Shoot</a>
-                </li>
-                <li class="cs-contact-li" style="list-style: none; margin-bottom: 0.75rem;">
-                    <a class="cs-contact-link" href="tel:{{ client.phoneForTel }}" style="color: #aaa; text-decoration: none; font-size: 0.875rem;">{{ client.phoneFormatted }}</a>
-                </li>
-                <li class="cs-contact-li" style="list-style: none; margin-bottom: 0.75rem;">
-                    <a class="cs-contact-link" href="mailto:{{ client.email }}" style="color: #aaa; text-decoration: none; font-size: 0.875rem;">{{ client.email }}</a>
-                </li>
-            </ul>
-        </div>
+
     </div>
-    
-    <!-- Copyright Section -->
-    <div style="text-align: center; padding: 2rem 0 0 0; width: 100%; border-top: 1px solid #111; margin-top: 4rem;">
-        <span style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">
-            Copyright &copy; 2026 <span style="font-weight: 700; color: #aaa;">VITESSE STUDIO</span>
-            <span style="margin: 0 0.5rem; color: #333;">|</span>
-            <a href="/privacy/" style="color: #666; text-decoration: none;">Privacy & Terms</a>
+
+    <!-- Minimalist Copyright & Legal -->
+    <div style="border-top: 1px solid #222; margin-top: 3.5rem; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; max-width: 80rem; margin-left: auto; margin-right: auto; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: #555; text-transform: uppercase; letter-spacing: 0.1em; gap: 1rem;">
+        
+        <span>&copy; 2026 MACH ONE AIR CHARTERS, INC.</span>
+        
+        <span style="display: flex; gap: 2rem;">
+            <a href="/privacy/" style="color: #555; text-decoration: none; transition: 0.3s;">Privacy Policy</a>
+            <a href="/terms/" style="color: #555; text-decoration: none; transition: 0.3s;">Terms of Service</a>
         </span>
+        
+        <span>Engineered by <span style="color: #777; font-weight: 600;">Deep Sea Digital</span></span>
     </div>
 </footer>

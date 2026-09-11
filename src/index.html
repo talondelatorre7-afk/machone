@@ -1,6 +1,6 @@
 ---
-title: "VITESSE | Automotive Visual Production Studio"
-description: "High-performance vehicle-to-vehicle tracking and commercial cinematography based in Southern California."
+title: "Mach One Air Charters | Elite Aircraft Management & Charter"
+description: "Turn-key jet management, worldwide charter services, and aircraft acquisitions based at Chino Airport."
 permalink: "/"
 tags: "sitemap"
 ---
@@ -18,193 +18,364 @@ tags: "sitemap"
     {% endif %}
 
     <style>
-        /* NUKING THE BASE TEMPLATE OVERRIDES & ANGLES */
-        #hero-143 {
+        /* =======================================================
+           1. PRISTINE HERO SECTION
+           ======================================================= */
+        #hero-clean {
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
             padding: 0 1rem;
-            clip-path: none !important; /* Forces the angle cut to break */
-            border: none !important;
-            margin: 0 !important;
+            background: #000; 
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary);
         }
-        /* Absolutely destroying any CodeStitch before/after artifacts on the hero */
-        #hero-143:before, 
-        #hero-143:after,
-        #hero-143 .cs-background:after {
-            display: none !important;
-            background: none !important;
+        
+        #hero-clean::before, #hero-clean::after { display: none !important; }
+
+        #hero-clean .cs-background {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
         }
+        #hero-clean .cs-background::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: 2;
+        }
+        #hero-clean video { width: 100%; height: 100%; object-fit: cover; }
+        
+        #hero-clean .cs-container { position: relative; z-index: 3; max-width: 60rem; margin: 0 auto; padding-top: 5rem;}
+        #hero-clean .cs-title { color: #fff; margin: 0 auto 1.5rem auto; font-size: clamp(2.5rem, 6vw, 5.5rem); letter-spacing: 0.02em; font-weight: 300; line-height: 1.1;}
+        #hero-clean .cs-text { color: #e5e5e5; font-size: 1.25rem; margin: 0 auto 3rem auto; max-width: 45rem; letter-spacing: 0.05em; line-height: 1.8;}
+        
+        /* Fixed Button Alignment */
+        .cs-button-group { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .btn-hero-solid { background: #fff; color: #111; border: 1px solid #fff; margin: 0;}
+        .btn-hero-solid:hover { background: var(--primary); color: #fff; border-color: var(--primary);}
 
-        #hero-143 .cs-title { color: #fff; margin: 0 auto 1.5rem auto; font-size: clamp(3rem, 8vw, 6.5rem); }
-        #hero-143 .cs-text { color: #e5e5e5; font-size: 1.25rem; margin: 0 auto 2.5rem auto; }
-        #hero-143 .cs-background { position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1; background: #000; overflow: hidden;}
-        #hero-143 .cs-background::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; display: block !important;}
-        #hero-video { width: 100%; height: 100%; object-fit: cover; }
+        /* =======================================================
+           2. CORPORATE TRUST BAR
+           ======================================================= */
+        #trust-bar { background: #111; padding: 2.5rem 1rem; border-bottom: 1px solid #222; }
+        .trust-container { max-width: 90rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 2rem; }
+        .trust-item { text-align: center; }
+        .trust-value { display: block; font-family: var(--headerFont); font-size: 1.25rem; color: var(--primary); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem;}
+        .trust-label { display: block; font-family: var(--bodyFont); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.15em; }
 
-        /* DIRECTORS STATEMENT */
-        #vitesse-statement { padding: var(--sectionPadding); background: #000; text-align: center; border-bottom: 1px solid #111; }
-        #vitesse-statement .cs-container { max-width: 60rem; margin: 0 auto; }
-        #vitesse-statement .cs-title { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 2rem;}
-        #vitesse-statement .cs-text { font-size: 1.125rem; color: #aaa; margin: 0 auto; max-width: 50rem; line-height: 1.6;}
+        /* =======================================================
+           3. INTRODUCTION / PHILOSOPHY (SPACING FIXED)
+           ======================================================= */
+        /* Removed top and bottom padding to fuse with adjacent sections */
+        #intro-block { padding: clamp(3rem, 6vw, 5rem) 1rem 0 1rem; background: #ffffff; }
+        .intro-container { max-width: 90rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media (min-width: 64rem) { .intro-container { grid-template-columns: 1fr 1.2fr; gap: 6rem; } }
+        
+        .intro-left .cs-title { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; color: #111;}
+        .intro-left .cs-topper { margin-bottom: 1rem; }
+        
+        /* Reduced bottom margin on intro-lead */
+        .intro-right .intro-lead { font-size: 1.25rem; color: #333; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
+        .intro-right .cs-text { font-size: 1rem; color: #666; line-height: 1.8; margin-bottom: 1.5rem;}
 
-        /* BRUTALIST SERVICE GRID */
-        #vitesse-services { background-color: #050505; border-bottom: 1px solid #111; }
-        .v-service-grid { display: grid; grid-template-columns: 1fr; width: 100%; margin: 0; padding: 0; list-style: none; }
-        @media (min-width: 64rem) { .v-service-grid { grid-template-columns: repeat(3, 1fr); } }
-        .v-service-item { padding: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem); border-bottom: 1px solid #111; display: flex; flex-direction: column; justify-content: space-between; min-height: 400px; }
-        @media (min-width: 64rem) { .v-service-item { border-bottom: none; border-right: 1px solid #111; } .v-service-item:last-child { border-right: none; } }
-        .v-service-number { font-family: var(--headerFont); font-size: 2.5rem; color: #222; margin-bottom: 2rem; }
-        .v-service-title { font-family: var(--headerFont); font-size: 1.5rem; text-transform: uppercase; margin: 0 0 1rem 0; color: #fff; }
-        .v-service-text { color: #aaa; font-size: 1rem; line-height: 1.6; }
+        /* =======================================================
+           4. CORE SERVICES (SPACING FIXED)
+           ======================================================= */
+        /* Removed background and top padding */
+        #services { background-color: #ffffff; padding: clamp(3rem, 6vw, 5rem) 1rem; }
+        .service-header { text-align: center; margin-bottom: 3rem; }
+        
+        .service-header .cs-title { margin: 0 auto 1.5rem auto !important; text-align: center; }
 
-        /* RIG HIGHLIGHT (CLEAN TEXT) */
-        #vitesse-gear { padding: var(--sectionPadding); background: #000; }
-        .v-gear-container { max-width: 90rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-        @media (min-width: 64rem) { .v-gear-container { grid-template-columns: 1fr 1fr; } }
-        .v-gear-image { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(100%); }
-        .v-gear-list { list-style: none; padding: 0; margin: 3rem 0 0 0; border-top: 1px solid #333; }
-        .v-gear-list li { padding: 1.5rem 0; border-bottom: 1px solid #222; display: flex; justify-content: space-between; font-family: var(--headerFont); text-transform: uppercase; font-weight: 700; font-size: 1rem; color: #fff; letter-spacing: 0.1em;}
-        .v-gear-list span { color: #888; font-family: var(--bodyFont); font-weight: 400; text-transform: none; letter-spacing: 0;}
+        .service-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 90rem; margin: 0 auto; list-style: none; padding: 0;}
+        @media (min-width: 64rem) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        /* Added border and shadow for definition against white background */
+        .service-card { background: #ffffff; padding: 3rem 2rem; border: 1px solid #eaeaea; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--primary); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+        .service-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.06); transform: translateY(-5px); border-color: transparent; }
+        .service-card:hover::before { transform: scaleX(1); }
+        
+        .service-icon { font-family: var(--headerFont); font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem; display: block; font-weight: 300;}
+        .service-title { font-family: var(--headerFont); font-size: 1.25rem; font-weight: 400; margin: 0 0 1rem 0; color: #111; letter-spacing: 0.05em; text-transform: uppercase; }
+        .service-text { color: #555; font-size: 0.875rem; line-height: 1.6; margin: 0; }
 
-        /* COLOR PIPELINE */
-        #color-pipeline { padding: var(--sectionPadding); background: #050505; }
-        .pipeline-container { max-width: 80rem; margin: 3rem auto 0 auto; border: 1px solid #222; }
-        .pipeline-img-box { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000;}
-        .pipeline-img-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
-        .pipeline-img-box img.cs-active { opacity: 1; z-index: 2; }
-        .pipeline-controls { display: flex; border-top: 1px solid #222; }
-        .pipeline-btn { flex: 1; padding: 1.5rem; background: #000; border: none; color: #555; font-family: var(--headerFont); text-transform: uppercase; cursor: pointer; transition: all 0.3s; letter-spacing: 0.1em;}
-        .pipeline-btn.cs-active { color: #fff; background: #111; }
-        .pipeline-btn:first-child { border-right: 1px solid #222; }
+        /* =======================================================
+           5. THE CEO / LEADERSHIP HIGHLIGHT (SPACING FIXED)
+           ======================================================= */
+        /* Removed top and bottom padding */
+        #leadership { padding: 0 1rem; background: #ffffff; }
+        .leader-container { max-width: 80rem; margin: 0 auto; text-align: center; border: 1px solid #eaeaea; padding: 5rem 2rem; position: relative; }
+        
+        .leader-title { font-size: 1.75rem; font-family: var(--headerFont); font-weight: 300; color: #111; margin-bottom: 0.5rem; }
+        .leader-subtitle { font-size: 0.875rem; color: var(--primary); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 2rem; font-weight: 600; }
+        .leader-text { font-size: 1.125rem; color: #555; line-height: 1.6; max-width: 60rem; margin: 0 auto 2.5rem auto; font-style: italic; }
+        
+        .credentials-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+        .cred-item { font-family: var(--headerFont); color: #111; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; display: flex; flex-direction: column; align-items: center;}
+        .cred-item span { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.25rem; font-weight: 300; }
+
+        /* =======================================================
+           6. MANAGEMENT & COST SAVINGS (SPACING FIXED)
+           ======================================================= */
+        /* Removed background and top padding */
+        #management { padding: clamp(3rem, 5vw, 6rem) 1rem; background: #ffffff; }
+        .mgmt-container { max-width: 90rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+        @media (min-width: 64rem) { .mgmt-container { grid-template-columns: 1fr 1.2fr; gap: 6rem; } }
+        
+        .mgmt-image-wrapper { width: 100%; position: relative; }
+        .mgmt-image { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; }
+        
+        .mgmt-list { list-style: none; padding: 0; margin: 2rem 0 0 0; }
+        .mgmt-list li { padding: 1.25rem 0; border-bottom: 1px solid #eaeaea; position: relative; padding-left: 2rem; color: #333; line-height: 1.6; font-size: 1rem;}
+        .mgmt-list li::before { content: '—'; position: absolute; left: 0; top: 1.25rem; color: var(--primary); font-weight: bold; letter-spacing: 0;}
+
+        /* =======================================================
+           7. GUARANTEED REVENUE PROGRAM (SPACING FIXED)
+           ======================================================= */
+        /* Removed top and bottom padding entirely */
+        #revenue { padding: 0 1rem; background: #ffffff; text-align: center; }
+        .revenue-box { max-width: 70rem; margin: 0 auto; padding: 3rem 2rem; background: #fff; border: 1px solid var(--primary); box-shadow: 0 10px 30px rgba(197, 160, 89, 0.05); }
+        
+        #revenue .cs-title { color: #111; margin: 0 auto 1rem auto !important; font-size: 2rem; text-align: center; }
+        #revenue .cs-text { color: #555; font-size: 1rem; line-height: 1.6; margin: 0 auto !important; text-align: center; }
+
+        /* =======================================================
+           8. ACQUISITIONS & SALES BANNER
+           ======================================================= */
+        #sales-banner { padding: clamp(4rem, 8vw, 6rem) 1rem; background: #111; text-align: center; border-bottom: 4px solid var(--primary); margin-top: clamp(3rem, 6vw, 5rem); }
+        #sales-banner .cs-topper { color: var(--primary); }
+        
+        #sales-banner .cs-title { color: #fff; margin: 0 auto 1.5rem auto !important; text-align: center; font-size: clamp(2rem, 4vw, 3rem); }
+        #sales-banner .cs-text { color: #ccc; max-width: 55rem; margin: 0 auto 2.5rem auto !important; font-size: 1.125rem; text-align: center; }
+
+        /* =======================================================
+           9. JETINSIGHT BOOKING UI MOCKUP (SPACING FIXED)
+           ======================================================= */
+        /* Removed top and bottom padding */
+        #booking-ui { padding: clamp(4rem, 6vw, 6rem) 1rem; background: #f9f9f9; }
+        .booking-wrapper { max-width: 65rem; margin: 0 auto; background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.03); padding: 4rem 2rem; border-top: 4px solid var(--primary); }
+        .booking-header { text-align: center; margin-bottom: 3rem; }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .form-full { grid-column: 1 / -1; }
+        
+        .ui-label { font-family: var(--headerFont); font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        .ui-input { width: 100%; background: #fdfdfd; border: 1px solid #e0e0e0; padding: 1rem; color: #333; font-family: var(--bodyFont); font-size: 1rem; transition: all 0.3s; }
+        .ui-input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1); }
+        
+        .ui-button { grid-column: 1 / -1; background: var(--primary); color: #fff; border: none; padding: 1.25rem; font-family: var(--headerFont); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.875rem; cursor: pointer; margin-top: 0.5rem; transition: background 0.3s;}
+        .ui-button:hover { background: #111; }
+        
+        .powered-by { text-align: center; font-size: 0.7rem; color: #aaa; margin-top: 2rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        @media (max-width: 48rem) {
+            .form-grid { grid-template-columns: 1fr; }
+            .booking-wrapper { padding: 3rem 1.5rem; }
+        }
     </style>
 {% endblock %}
 
 {% block body %}
-    <!-- HERO SECTION -->
-    <section id="hero-143">
-        <div class="cs-container">
-            <span class="cs-topper">Visual Production Studio</span>
-            <h1 class="cs-title">Chasing The Apex</h1>
-            <p class="cs-text">High-end automotive cinematography. Based in Southern California.</p>
-            <div class="cs-button-group">
-                <a href="/portfolio/" class="cs-button-solid">View The Archive</a>
-            </div>
-        </div>
+    <!-- 1. PRISTINE HERO SECTION -->
+    <section id="hero-clean">
         <div class="cs-background">
             <video autoplay muted loop playsinline id="hero-video">
-                <source src="/assets/images/hero-main.mp4" type="video/mp4">
+                <!-- Drop your cinematic jet video here -->
+                <source src="/assets/images/jet-hero.mp4" type="video/mp4">
             </video>
+        </div>
+        <div class="cs-container">
+            <span class="cs-topper" style="color: var(--primary);">Mach One Air Charters, Inc.</span>
+            <h1 class="cs-title">Private Jet Management<br>in Southern California</h1>
+            <p class="cs-text">Elite Aircraft Management, Worldwide Charter Services, and Acquisitions based at Chino Airport.</p>
+            <div class="cs-button-group">
+                <a href="#booking-ui" class="cs-button-solid btn-hero-solid">Request a Flight</a>
+                <a href="#management" class="cs-button-outline" style="border-color: #fff; color: #fff;">Discover Mach One</a>
+            </div>
         </div>
     </section>
 
-    <!-- DIRECTORS STATEMENT -->
-    <section id="vitesse-statement">
+    <!-- 2. CORPORATE TRUST BAR -->
+    <section id="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <span class="trust-value">ARGUS Gold</span>
+                <span class="trust-label">Safety Rating</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-value">WYVERN</span>
+                <span class="trust-label">Registered</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-value">20+ Years</span>
+                <span class="trust-label">Industry Experience</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-value">$12M+</span>
+                <span class="trust-label">Managed Fleet</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. INTRODUCTION / PHILOSOPHY -->
+    <section id="intro-block">
+        <div class="intro-container">
+            <div class="intro-left">
+                <span class="cs-topper">About Us</span>
+                <h2 class="cs-title">Expertise<br>in the Skies</h2>
+                <a href="#booking-ui" class="cs-button-outline" style="border-color: #111; color: #111;">Contact Operations</a>
+            </div>
+            <div class="intro-right">
+                <p class="intro-lead">
+                    We bear expansive executive and in-flight experience. Utilizing a cultivated network of aviation professionals, we provide the utmost ease and transparency when it comes to all matters of your aircraft.
+                </p>
+                <p class="cs-text">
+                    Mach One’s primary focus is to provide our clients with a full-service management solution, from sales and acquisitions, to on-demand aircraft charter services, maintenance, and consulting services.
+                </p>
+                <p class="cs-text">
+                    You will always have an open line and direct contact with the company, ensuring no aspect related to the operation of your aircraft is ever left to chance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CORE SERVICES -->
+    <section id="services">
         <div class="cs-container">
-            <span class="cs-topper">The Mission</span>
-            <h2 class="cs-title">Bridging Machine and Media</h2>
+            <div class="service-header">
+                <span class="cs-topper">Capabilities</span>
+                <h2 class="cs-title" style="color: #111;">Our Services</h2>
+            </div>
+            
+            <ul class="service-grid">
+                <li class="service-card">
+                    <span class="service-icon">01</span>
+                    <h3 class="service-title">Charter</h3>
+                    <p class="service-text">
+                        Bespoke travel solutions for the discerning traveler. Mach One has a dedicated team available 24/7 to assist and support your charter needs worldwide. Our aircraft are positioned strategically and can be airborne in as little as 2 hours.
+                    </p>
+                </li>
+                <li class="service-card">
+                    <span class="service-icon">02</span>
+                    <h3 class="service-title">Management</h3>
+                    <p class="service-text">
+                        Comprehensive oversight for aircraft owners. We offer tailored management programs and unique charter opportunities to help you offset the cost of aircraft ownership. We manage your most valuable asset as if it were our own.
+                    </p>
+                </li>
+                <li class="service-card">
+                    <span class="service-icon">03</span>
+                    <h3 class="service-title">Sales</h3>
+                    <p class="service-text">
+                        Expert guidance through aircraft acquisition and disposition. Leverage our global network and market intelligence to navigate transactions with total confidence. We offer unique after-purchase services customized for every owner.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. THE CEO / LEADERSHIP HIGHLIGHT -->
+    <section id="leadership">
+        <div class="leader-container">
+            <h2 class="leader-title">Led By Experience</h2>
+            <div class="leader-subtitle">Dan Hill — CEO & Director of Operations</div>
+            <p class="leader-text">
+                "So you thought you could never afford a private jet. With the current tax benefits and the guaranteed charter revenue at Mach One, allow me to help you experience your dream of private jet ownership."
+            </p>
+            <div class="credentials-grid">
+                <div class="cred-item"><span>Airline Transport</span> Certified Pilot</div>
+                <div class="cred-item"><span>Citation XLS</span> Active Captain</div>
+                <div class="cred-item"><span>293 / 297</span> Check Rides Given</div>
+                <div class="cred-item"><span>299</span> Aircraft Checks</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. MANAGEMENT & COST SAVINGS -->
+    <section id="management">
+        <div class="mgmt-container">
+            <div class="mgmt-image-wrapper">
+                <!-- High-res interior or exterior jet shot -->
+                <img class="mgmt-image" src="/assets/images/jethero1.jpg" alt="Aircraft Management Logistics" loading="lazy">
+            </div>
+            <div class="mgmt-content">
+                <span class="cs-topper">Streamlined Solutions</span>
+                <h2 class="cs-title" style="color: #111;">Exceptional Service & Cost Savings</h2>
+                <p class="cs-text" style="margin-bottom: 1.5rem;">
+                    The Mach One team will bring value, exceptional service, and cost savings to your flight operations. Our streamline solutions include pilot selection and hiring, maintenance program management, trip planning, scheduling, documentation, and oversight of every operational phase.
+                </p>
+                <ul class="mgmt-list">
+                    <li>Known for pass-through pricing on maintenance, parts, insurance, training, and fuel.</li>
+                    <li>Established contracts nationwide for discounted fuel and maintenance facilities.</li>
+                    <li>Exclusive 11-year established contract with Sentient Jets, one of the largest charter brokers in the US.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. GUARANTEED REVENUE PROGRAM STANDALONE -->
+    <section id="revenue">
+        <div class="revenue-box">
+            <span class="cs-topper">Industry Leading Program</span>
+            <h2 class="cs-title">The Guaranteed Revenue Program</h2>
             <p class="cs-text">
-                VITESSE was founded to solve a critical issue in automotive media: capturing raw momentum without sacrificing cinematic fidelity. We don't just point a camera out the window—we bolt heavy metal to heavy metal, engineering visual experiences that match the precision of the machines we film.
+                Mach One Air Charters is one of the few aviation companies in the industry that offers a GUARANTEED revenue program to our customers, secured in a written annual contract. This one-of-a-kind program offers unparalleled peace of mind and the financial stability required to confidently operate a private jet.
             </p>
         </div>
     </section>
 
-    <!-- BRUTALIST SERVICE GRID -->
-    <section id="vitesse-services">
-        <ul class="v-service-grid">
-            <li class="v-service-item">
-                <div class="v-service-number">01</div>
-                <div>
-                    <h2 class="v-service-title">High-Speed Tracking</h2>
-                    <p class="v-service-text">
-                        Vehicle-to-vehicle tracking utilizing mechanical damping systems to capture perfectly smooth, high-speed rollers and intense pursuit angles.
-                    </p>
-                </div>
-            </li>
-            <li class="v-service-item">
-                <div class="v-service-number">02</div>
-                <div>
-                    <h2 class="v-service-title">Commercial Media</h2>
-                    <p class="v-service-text">
-                        From static architectural lighting to dynamic motion, we craft uncompromising visual campaigns for hypercars, exotics, and bespoke builds.
-                    </p>
-                </div>
-            </li>
-            <li class="v-service-item">
-                <div class="v-service-number">03</div>
-                <div>
-                    <h2 class="v-service-title">Post-Production</h2>
-                    <p class="v-service-text">
-                        Rigorous editing and color grading pipelines utilizing DaVinci Resolve to extract maximum dynamic range and heavy, cinematic tones.
-                    </p>
-                </div>
-            </li>
-        </ul>
-    </section>
-
-    <!-- RIG HIGHLIGHT -->
-    <section id="vitesse-gear">
-        <div class="v-gear-container">
-            <div class="v-gear-content">
-                <span class="cs-topper">The Pursuit Rig</span>
-                <h2 class="cs-title">Engineered For Momentum</h2>
-                <p class="cs-text">
-                    Our production rig is built to stabilize heavy 10-bit cinema cameras at highway speeds, guaranteeing flawless footage regardless of the conditions.
-                </p>
-                <ul class="v-gear-list">
-                    <li>Camera <span>Canon EOS R5 C (XF-AVC)</span></li>
-                    <li>Lenses <span>Canon RF 24-70mm</span></li>
-                    <li>Mount <span>Tilta Hydra Alien Pro</span></li>
-                    <li>Chase Vehicle <span>GMC Canyon Elevation</span></li>
-                </ul>
-            </div>
-            <!-- Swap image with a wide shot of the truck/rig -->
-            <img class="v-gear-image" src="/assets/images/chino2.webp" alt="Tracking Rig Setup" loading="lazy">
+    <!-- 8. ACQUISITIONS & SALES BANNER -->
+    <section id="sales-banner">
+        <div class="cs-container">
+            <span class="cs-topper">Aircraft Sales & Consulting</span>
+            <h2 class="cs-title">Navigate Transactions With Confidence</h2>
+            <p class="cs-text">
+                Our specialized sales team has helped owners save millions of dollars on both aircraft sales and acquisitions. From market intelligence to tax benefit structuring, we ensure your capital is protected.
+            </p>
+            <a href="#booking-ui" class="cs-button-solid" style="background: var(--primary); color: #fff;">Inquire About Acquisitions</a>
         </div>
     </section>
 
-    <!-- COLOR PIPELINE -->
-    <section id="color-pipeline">
-        <div class="cs-container" style="max-width: 60rem; margin: 0 auto; text-align: center;">
-            <span class="cs-topper">The Pipeline</span>
-            <h2 class="cs-title" style="margin-bottom: 1.5rem;">Precision Grade</h2>
-            <p class="cs-text" style="margin: 0 auto;">Shooting the footage is only half the battle. We run a heavy-duty DaVinci Resolve workflow, pushing 10-bit XF-AVC files to achieve a flawless, cinematic aesthetic.</p>
-        </div>
-        
-        <div class="pipeline-container">
-            <div class="pipeline-img-box">
-                <img class="cs-img-new cs-active" src="/assets/images/with grade.webp" alt="Final Grade" loading="lazy">
-                <img class="cs-img-old" src="/assets/images/RAW.webp" alt="Raw Log Format" loading="lazy">
+    <!-- 9. JETINSIGHT BOOKING UI MOCKUP -->
+    <section id="booking-ui">
+        <div class="booking-wrapper">
+            <div class="booking-header">
+                <span class="cs-topper">Charter Inquiry</span>
+                <h2 class="cs-title" style="color: #111; margin: 0 auto 1rem auto !important; text-align: center;">Request a Flight</h2>
+                <p style="color: #666; margin-top: 0.5rem; font-size: 1rem;">Enter your itinerary below to receive a bespoke charter quote from our dedicated team.</p>
             </div>
-            <div class="pipeline-controls">
-                <button class="pipeline-btn cs-active" onclick="toggleColor(this, 'new')">Final Output</button>
-                <button class="pipeline-btn" onclick="toggleColor(this, 'old')">Raw XF-AVC Log</button>
-            </div>
+            
+            <form class="form-grid">
+                <div>
+                    <label class="ui-label">Departure Airport</label>
+                    <input type="text" class="ui-input" placeholder="City or Airport Code (e.g., CNO)">
+                </div>
+                <div>
+                    <label class="ui-label">Arrival Airport</label>
+                    <input type="text" class="ui-input" placeholder="City or Airport Code (e.g., TEB)">
+                </div>
+                <div>
+                    <label class="ui-label">Departure Date</label>
+                    <input type="date" class="ui-input">
+                </div>
+                <div>
+                    <label class="ui-label">Passengers</label>
+                    <input type="number" class="ui-input" placeholder="Number of Passengers">
+                </div>
+                <div class="form-full">
+                    <label class="ui-label">Full Name</label>
+                    <input type="text" class="ui-input" placeholder="Your Legal Name">
+                </div>
+                <div class="form-full">
+                    <label class="ui-label">Email Address</label>
+                    <input type="email" class="ui-input" placeholder="name@company.com">
+                </div>
+                
+                <button type="button" class="ui-button">Calculate Quote</button>
+            </form>
+            <div class="powered-by">Concept UI — Seamlessly integrates with JetInsight Architecture</div>
         </div>
     </section>
 
-    {% include 'sections/cta.html' %}
-
-    <script>
-        function toggleColor(btn, state) {
-            const container = btn.closest('.pipeline-container');
-            const btns = container.querySelectorAll('.pipeline-btn');
-            const imgNew = container.querySelector('.cs-img-new');
-            const imgOld = container.querySelector('.cs-img-old');
-
-            btns.forEach(b => b.classList.remove('cs-active'));
-            btn.classList.add('cs-active');
-
-            if (state === 'new') {
-                imgNew.classList.add('cs-active');
-                imgOld.classList.remove('cs-active');
-            } else {
-                imgOld.classList.add('cs-active');
-                imgNew.classList.remove('cs-active');
-            }
-        }
-    </script>
 {% endblock %}

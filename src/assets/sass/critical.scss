@@ -1,171 +1,50 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// CRITICAL PAGE STYLES
-// Above-the-fold and high-priority styles for the home page's landing section.
-// Put the first section of the home page in here, so it loads immediately.
-// The rest of the home page styles in local.css will be deferred and
+// CRITICAL PAGE STYLES (LIGHT LUXURY)
 // ─────────────────────────────────────────────────────────────────────────────
-
-/*-- -------------------------- -->
-<---           Hero             -->
-<--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #hero-143 {
-        /* Centers button */
-        text-align: center;
-        /* 144px - 300px - leaving extra space for the navigation */
-        padding: clamp(9rem, 25.95vw, 18.75rem) calc(16 / 16 * 1rem) 0;
-        /* 130px - 450px */
-        padding-bottom: clamp(12.125rem, 30.95vw, 28.125rem);
+    #hero-clean {
         position: relative;
-        z-index: 1;
-        /* Prevents white rectangle pseudos from overlapping the sections below */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1rem;
+        background: #000; 
         overflow: hidden;
+        border-bottom: 4px solid var(--primary);
+    }
+    
+    #hero-clean .cs-background {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    }
+    #hero-clean .cs-background::after {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.6); 
+        z-index: 2;
+    }
+    #hero-clean video { width: 100%; height: 100%; object-fit: cover; }
+    
+    #hero-clean .cs-container { position: relative; z-index: 3; max-width: 60rem; margin: 0 auto; padding-top: 5rem;}
+    #hero-clean .cs-title { color: #fff; margin: 0 auto 1.5rem auto; font-size: clamp(2.5rem, 6vw, 5.5rem); letter-spacing: 0.02em; font-weight: 300; line-height: 1.1;}
+    #hero-clean .cs-text { color: #e5e5e5; font-size: 1.25rem; margin: 0 auto 3rem auto; max-width: 45rem; letter-spacing: 0.05em; line-height: 1.8;}
+    
+    .cs-button-group { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-hero-solid { background: #fff; color: #111; border: 1px solid #fff; margin: 0;}
+    .btn-hero-solid:hover { background: var(--primary); color: #fff; border-color: var(--primary);}
+}
 
-        &:before {
-            /* Left side of the triangle */
-            content: "";
-            width: calc(500 / 16 * 1rem);
-            /* make really long so it covers the whole screen all the way to desktop */
-            height: calc(4000 / 16 * 1rem);
-            background: #fff;
-            opacity: 1;
-            transform: rotate(-67deg);
-            transform-origin: center;
-            position: absolute;
-            display: block;
-            bottom: calc(-2235 / 16 * 1rem);
-            /* this makes the right edge sit at the 50% line at all times */
-            right: 50%;
-            z-index: 0;
-        }
-
-        &:after {
-            /* Right side of the triangle */
-            content: "";
-            width: calc(500 / 16 * 1rem);
-            height: calc(4000 / 16 * 1rem);
-            background: #fff;
-            opacity: 1;
-            transform: rotate(67deg);
-            transform-origin: center;
-            position: absolute;
-            display: block;
-            bottom: calc(-2235 / 16 * 1rem);
-            /* this makes the left edge sit at the 50% line at all times */
-            left: 50%;
-            z-index: 0;
-        }
-
-        .cs-background {
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -2;
-
-            &:before {
-                /* Overlay */
-                content: "";
-                width: 100%;
-                height: 100%;
-                background: #000;
-                opacity: 0.7;
-                position: absolute;
-                display: block;
-                top: 0;
-                left: 0;
-                z-index: 1;
-                /* prevents the cursor from interacting with it */
-                pointer-events: none;
-            }
-
-            img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-        }
-// NEW STANDALONE VIDEO (add right below cs-standalone-picture)
+/* Standalone Video & Parallax Handlers */
 .cs-standalone-video {
-    position: relative; 
-    display: block;
-    width: 100%;
-    max-width: calc(522 / 16 * 1em); // Binds the max-width on desktop
-    height: auto;
-    aspect-ratio: 522 / 581; // Matches the standard container layout for consistency
-    margin: 0 auto; 
-    border-radius: calc(24 / 16 * 1em);
-    overflow: hidden;
-    /* A deep dark background that suggests technical depth and high-end performance */
-    background-color: #030a13; // Dark sea/brutalist tone
+    position: relative; display: block; width: 100%; max-width: calc(522 / 16 * 1em); 
+    height: auto; aspect-ratio: 522 / 581; margin: 0 auto; 
+    border-radius: calc(24 / 16 * 1em); overflow: hidden; background-color: #030a13; 
 
     .cs-video-element {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        /* Change this from 'cover' to 'contain' to ensure the entire video frames are visible without cropping */
-        object-fit: cover; 
-        object-position: center; // Centers the video content vertically and horizontally
-        /* High-performance styling: ensuring no border or artifacts */
-        border: none;
-    }
-}
-        .cs-container {
-            width: 100%;
-            max-width: calc(1280 / 16 * 1rem);
-            margin: auto;
-        }
-
-        .cs-title {
-            /* 39px - 61px */
-            font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
-            font-weight: 700;
-            line-height: 1.2em;
-            text-align: center;
-            max-width: calc(829 / 16 * 1rem);
-            /* 16px - 24px */
-            margin: 0 auto clamp(1rem, 4vw, 1.5rem);
-            color: #fff;
-            position: relative;
-
-            &:after {
-                /* Divider Line */
-                content: "";
-                /* 60px - 100px */
-                width: clamp(3.75rem, 9.5vw, 6.25rem);
-                /* 4px - 8px */
-                height: clamp(0.25rem, 0.8vw, 0.5rem);
-                /* 16px - 24px */
-                margin: clamp(1rem, 4vw, 1.5rem) auto clamp(1rem, 4vw, 1.5rem);
-                background: var(--primary);
-                opacity: 1;
-                position: relative;
-                display: block;
-            }
-        }
-
-        .cs-text {
-            /* 16px - 25px */
-            font-size: clamp(1rem, 1.95vw, 1.5625rem);
-            line-height: 1.5em;
-            text-align: center;
-            width: 100%;
-            /* 464px - 800px */
-            max-width: clamp(29rem, 60vw, 50rem);
-            margin: 0 auto;
-            /* 40px - 48px */
-            margin-bottom: clamp(2.5rem, 4vw, 3rem);
-            color: #fff;
-        }
+        position: absolute; top: 0; left: 0; height: 100%; width: 100%;
+        object-fit: cover; object-position: center; border: none;
     }
 }
 
