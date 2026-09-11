@@ -1,0 +1,210 @@
+---
+title: "VITESSE | Automotive Visual Production Studio"
+description: "High-performance vehicle-to-vehicle tracking and commercial cinematography based in Southern California."
+permalink: "/"
+tags: "sitemap"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/critical.css" />
+
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/assets/css/local.css"></noscript>
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css" />
+    {% endif %}
+
+    <style>
+        /* NUKING THE BASE TEMPLATE OVERRIDES & ANGLES */
+        #hero-143 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 1rem;
+            clip-path: none !important; /* Forces the angle cut to break */
+            border: none !important;
+            margin: 0 !important;
+        }
+        /* Absolutely destroying any CodeStitch before/after artifacts on the hero */
+        #hero-143:before, 
+        #hero-143:after,
+        #hero-143 .cs-background:after {
+            display: none !important;
+            background: none !important;
+        }
+
+        #hero-143 .cs-title { color: #fff; margin: 0 auto 1.5rem auto; font-size: clamp(3rem, 8vw, 6.5rem); }
+        #hero-143 .cs-text { color: #e5e5e5; font-size: 1.25rem; margin: 0 auto 2.5rem auto; }
+        #hero-143 .cs-background { position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1; background: #000; overflow: hidden;}
+        #hero-143 .cs-background::before { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; display: block !important;}
+        #hero-video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* DIRECTORS STATEMENT */
+        #vitesse-statement { padding: var(--sectionPadding); background: #000; text-align: center; border-bottom: 1px solid #111; }
+        #vitesse-statement .cs-container { max-width: 60rem; margin: 0 auto; }
+        #vitesse-statement .cs-title { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 2rem;}
+        #vitesse-statement .cs-text { font-size: 1.125rem; color: #aaa; margin: 0 auto; max-width: 50rem; line-height: 1.6;}
+
+        /* BRUTALIST SERVICE GRID */
+        #vitesse-services { background-color: #050505; border-bottom: 1px solid #111; }
+        .v-service-grid { display: grid; grid-template-columns: 1fr; width: 100%; margin: 0; padding: 0; list-style: none; }
+        @media (min-width: 64rem) { .v-service-grid { grid-template-columns: repeat(3, 1fr); } }
+        .v-service-item { padding: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem); border-bottom: 1px solid #111; display: flex; flex-direction: column; justify-content: space-between; min-height: 400px; }
+        @media (min-width: 64rem) { .v-service-item { border-bottom: none; border-right: 1px solid #111; } .v-service-item:last-child { border-right: none; } }
+        .v-service-number { font-family: var(--headerFont); font-size: 2.5rem; color: #222; margin-bottom: 2rem; }
+        .v-service-title { font-family: var(--headerFont); font-size: 1.5rem; text-transform: uppercase; margin: 0 0 1rem 0; color: #fff; }
+        .v-service-text { color: #aaa; font-size: 1rem; line-height: 1.6; }
+
+        /* RIG HIGHLIGHT (CLEAN TEXT) */
+        #vitesse-gear { padding: var(--sectionPadding); background: #000; }
+        .v-gear-container { max-width: 90rem; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+        @media (min-width: 64rem) { .v-gear-container { grid-template-columns: 1fr 1fr; } }
+        .v-gear-image { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(100%); }
+        .v-gear-list { list-style: none; padding: 0; margin: 3rem 0 0 0; border-top: 1px solid #333; }
+        .v-gear-list li { padding: 1.5rem 0; border-bottom: 1px solid #222; display: flex; justify-content: space-between; font-family: var(--headerFont); text-transform: uppercase; font-weight: 700; font-size: 1rem; color: #fff; letter-spacing: 0.1em;}
+        .v-gear-list span { color: #888; font-family: var(--bodyFont); font-weight: 400; text-transform: none; letter-spacing: 0;}
+
+        /* COLOR PIPELINE */
+        #color-pipeline { padding: var(--sectionPadding); background: #050505; }
+        .pipeline-container { max-width: 80rem; margin: 3rem auto 0 auto; border: 1px solid #222; }
+        .pipeline-img-box { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #000;}
+        .pipeline-img-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
+        .pipeline-img-box img.cs-active { opacity: 1; z-index: 2; }
+        .pipeline-controls { display: flex; border-top: 1px solid #222; }
+        .pipeline-btn { flex: 1; padding: 1.5rem; background: #000; border: none; color: #555; font-family: var(--headerFont); text-transform: uppercase; cursor: pointer; transition: all 0.3s; letter-spacing: 0.1em;}
+        .pipeline-btn.cs-active { color: #fff; background: #111; }
+        .pipeline-btn:first-child { border-right: 1px solid #222; }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <!-- HERO SECTION -->
+    <section id="hero-143">
+        <div class="cs-container">
+            <span class="cs-topper">Visual Production Studio</span>
+            <h1 class="cs-title">Chasing The Apex</h1>
+            <p class="cs-text">High-end automotive cinematography. Based in Southern California.</p>
+            <div class="cs-button-group">
+                <a href="/portfolio/" class="cs-button-solid">View The Archive</a>
+            </div>
+        </div>
+        <div class="cs-background">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="/assets/images/hero-main.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- DIRECTORS STATEMENT -->
+    <section id="vitesse-statement">
+        <div class="cs-container">
+            <span class="cs-topper">The Mission</span>
+            <h2 class="cs-title">Bridging Machine and Media</h2>
+            <p class="cs-text">
+                VITESSE was founded to solve a critical issue in automotive media: capturing raw momentum without sacrificing cinematic fidelity. We don't just point a camera out the window—we bolt heavy metal to heavy metal, engineering visual experiences that match the precision of the machines we film.
+            </p>
+        </div>
+    </section>
+
+    <!-- BRUTALIST SERVICE GRID -->
+    <section id="vitesse-services">
+        <ul class="v-service-grid">
+            <li class="v-service-item">
+                <div class="v-service-number">01</div>
+                <div>
+                    <h2 class="v-service-title">High-Speed Tracking</h2>
+                    <p class="v-service-text">
+                        Vehicle-to-vehicle tracking utilizing mechanical damping systems to capture perfectly smooth, high-speed rollers and intense pursuit angles.
+                    </p>
+                </div>
+            </li>
+            <li class="v-service-item">
+                <div class="v-service-number">02</div>
+                <div>
+                    <h2 class="v-service-title">Commercial Media</h2>
+                    <p class="v-service-text">
+                        From static architectural lighting to dynamic motion, we craft uncompromising visual campaigns for hypercars, exotics, and bespoke builds.
+                    </p>
+                </div>
+            </li>
+            <li class="v-service-item">
+                <div class="v-service-number">03</div>
+                <div>
+                    <h2 class="v-service-title">Post-Production</h2>
+                    <p class="v-service-text">
+                        Rigorous editing and color grading pipelines utilizing DaVinci Resolve to extract maximum dynamic range and heavy, cinematic tones.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- RIG HIGHLIGHT -->
+    <section id="vitesse-gear">
+        <div class="v-gear-container">
+            <div class="v-gear-content">
+                <span class="cs-topper">The Pursuit Rig</span>
+                <h2 class="cs-title">Engineered For Momentum</h2>
+                <p class="cs-text">
+                    Our production rig is built to stabilize heavy 10-bit cinema cameras at highway speeds, guaranteeing flawless footage regardless of the conditions.
+                </p>
+                <ul class="v-gear-list">
+                    <li>Camera <span>Canon EOS R5 C (XF-AVC)</span></li>
+                    <li>Lenses <span>Canon RF 24-70mm</span></li>
+                    <li>Mount <span>Tilta Hydra Alien Pro</span></li>
+                    <li>Chase Vehicle <span>GMC Canyon Elevation</span></li>
+                </ul>
+            </div>
+            <!-- Swap image with a wide shot of the truck/rig -->
+            <img class="v-gear-image" src="/assets/images/chino2.webp" alt="Tracking Rig Setup" loading="lazy">
+        </div>
+    </section>
+
+    <!-- COLOR PIPELINE -->
+    <section id="color-pipeline">
+        <div class="cs-container" style="max-width: 60rem; margin: 0 auto; text-align: center;">
+            <span class="cs-topper">The Pipeline</span>
+            <h2 class="cs-title" style="margin-bottom: 1.5rem;">Precision Grade</h2>
+            <p class="cs-text" style="margin: 0 auto;">Shooting the footage is only half the battle. We run a heavy-duty DaVinci Resolve workflow, pushing 10-bit XF-AVC files to achieve a flawless, cinematic aesthetic.</p>
+        </div>
+        
+        <div class="pipeline-container">
+            <div class="pipeline-img-box">
+                <img class="cs-img-new cs-active" src="/assets/images/with grade.webp" alt="Final Grade" loading="lazy">
+                <img class="cs-img-old" src="/assets/images/RAW.webp" alt="Raw Log Format" loading="lazy">
+            </div>
+            <div class="pipeline-controls">
+                <button class="pipeline-btn cs-active" onclick="toggleColor(this, 'new')">Final Output</button>
+                <button class="pipeline-btn" onclick="toggleColor(this, 'old')">Raw XF-AVC Log</button>
+            </div>
+        </div>
+    </section>
+
+    {% include 'sections/cta.html' %}
+
+    <script>
+        function toggleColor(btn, state) {
+            const container = btn.closest('.pipeline-container');
+            const btns = container.querySelectorAll('.pipeline-btn');
+            const imgNew = container.querySelector('.cs-img-new');
+            const imgOld = container.querySelector('.cs-img-old');
+
+            btns.forEach(b => b.classList.remove('cs-active'));
+            btn.classList.add('cs-active');
+
+            if (state === 'new') {
+                imgNew.classList.add('cs-active');
+                imgOld.classList.remove('cs-active');
+            } else {
+                imgOld.classList.add('cs-active');
+                imgNew.classList.remove('cs-active');
+            }
+        }
+    </script>
+{% endblock %}

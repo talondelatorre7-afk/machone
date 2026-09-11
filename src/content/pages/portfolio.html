@@ -1,0 +1,330 @@
+---
+title: "The Archive | VITESSE"
+description: "Explore our featured cinematography and high-performance automotive media projects."
+permalink: "/portfolio/"
+tags: "sitemap"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/critical.css" />
+
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/assets/css/local.css"></noscript>
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css" />
+    {% endif %}
+
+    <style>
+        /* ============================================ */
+        /* STAGGERED EDITORIAL LOOKBOOK (FEATURED)      */
+        /* ============================================ */
+        #vitesse-archive {
+            padding-top: clamp(8rem, 15vw, 12rem);
+            padding-bottom: var(--sectionPadding);
+            background-color: var(--dark);
+        }
+        
+        /* STRICT CENTERING FIX */
+        .archive-header { 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            text-align: center; 
+            margin-bottom: 6rem; 
+            padding: 0 1rem; 
+            width: 100%;
+        }
+        
+        .archive-header .cs-topper,
+        .archive-header .cs-title,
+        .archive-header .cs-text {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .archive-header .cs-title { margin-bottom: 1.5rem; }
+        
+        .archive-list {
+            display: flex; flex-direction: column; width: 100%;
+            max-width: 90rem; margin: 0 auto; padding: 0 1rem; gap: 6rem;
+        }
+
+        .archive-item { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+
+        @media (min-width: 64rem) {
+            .archive-item { grid-template-columns: 1.5fr 1fr; gap: 4rem; }
+            .archive-item:nth-child(even) { grid-template-columns: 1fr 1.5fr; }
+            .archive-item:nth-child(even) .archive-media { order: 2; }
+            .archive-item:nth-child(even) .archive-content { order: 1; }
+        }
+
+        .archive-media { width: 100%; position: relative; overflow: hidden; aspect-ratio: 16/10; background: #111;}
+        .archive-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform 0.6s, filter 0.6s; }
+        .archive-item:hover .archive-media img { transform: scale(1.03); filter: grayscale(0%); }
+
+        .archive-content { display: flex; flex-direction: column; align-items: flex-start; }
+        .archive-client { font-family: var(--headerFont); font-size: clamp(2rem, 4vw, 3rem); color: #fff; text-transform: uppercase; font-weight: 900; margin: 0 0 1rem 0; line-height: 1.1; }
+        .archive-desc { color: #aaa; font-size: 1.125rem; margin: 0 0 2rem 0; line-height: 1.6; }
+        
+        .tech-list { display: flex; gap: 1rem; margin-bottom: 2.5rem; font-family: var(--headerFont); font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.1em;}
+
+        /* ============================================ */
+        /* THE VAULT: CLOUDFLARE MASS VIDEO GRID        */
+        /* ============================================ */
+        #vitesse-vault {
+            padding: var(--sectionPadding);
+            background: #050505;
+            border-top: 1px solid #111;
+        }
+
+        .vault-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .vault-specs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .vault-spec-badge {
+            font-family: var(--headerFont);
+            font-size: 0.75rem;
+            color: #888;
+            border: 1px solid #333;
+            padding: 0.5rem 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Trusted By Reel */
+        .trusted-by {
+            width: 100%;
+            max-width: 90rem;
+            margin: 0 auto 5rem auto;
+            padding: 3rem 1rem;
+            border-top: 1px solid #111;
+            border-bottom: 1px solid #111;
+            text-align: center;
+        }
+
+        .trusted-label {
+            font-family: var(--headerFont);
+            font-size: 0.875rem;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        .logo-reel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: clamp(2rem, 5vw, 5rem);
+        }
+
+        .client-logo {
+            max-height: 50px;
+            width: auto;
+            filter: grayscale(100%) opacity(0.4);
+            transition: filter 0.4s ease, opacity 0.4s ease;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        /* Brutalist Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 100rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 48rem) {
+            .video-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        }
+
+        @media (min-width: 75rem) {
+            .video-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .video-wrapper:hover {
+            border-color: #555;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <!-- ============================================ -->
+    <!--            FEATURED EDITORIAL REELS          -->
+    <!-- ============================================ -->
+    <section id="vitesse-archive">
+        <div class="archive-header">
+            <span class="cs-topper">Portfolio</span>
+            <h1 class="cs-title">The Archive</h1>
+            <p class="cs-text" style="margin: 0 auto; max-width: 40rem;">Commercial visual media and cinematic shoots capturing exotic and high-performance vehicles.</p>
+        </div>
+
+        <div class="archive-list">
+            
+            <!-- Project 1 -->
+            <div class="archive-item">
+                <div class="archive-media">
+                    <img src="/assets/images/chino2.webp" alt="Ferrari SF90 XX Spider">
+                </div>
+                <div class="archive-content">
+                    <h2 class="archive-client">Ferrari SF90 XX</h2>
+                    <p class="archive-desc">A cinematic commercial edit capturing the aggressive aero and raw hybrid power of the SF90 XX Spider through the hills of Chino.</p>
+                    <div class="tech-list">
+                        <span>Canon R5 C</span> // <span>Tracking Rig</span> // <span>Resolve</span>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=50XVp49i6lI" target="_blank" class="cs-button-outline">Watch Film</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="archive-item">
+                <div class="archive-media">
+                    <img src="/assets/images/09.webp" alt="Vitesse Studio Reel">
+                </div>
+                <div class="archive-content">
+                    <h2 class="archive-client">Studio Showreel</h2>
+                    <p class="archive-desc">The definitive 60-second supercut of our best high-speed rollers, static architectural lighting, and raw automotive momentum.</p>
+                    <div class="tech-list">
+                        <span>Commercial</span> // <span>Action Edit</span> // <span>4K Delivery</span>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=5sGQ5lrAtpM" target="_blank" class="cs-button-outline">Play Reel</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!-- ============================================ -->
+<!--              UNIVERSAL SPACER                -->
+<!-- ============================================ -->
+<div style="margin-top: 2rem; margin-bottom: 0rem; position: relative; z-index: 10;">
+</div>
+    <!-- ============================================ -->
+    <!--            THE CLOUDFLARE VAULT              -->
+    <!-- ============================================ -->
+    <section id="vitesse-vault">
+        
+        <div class="vault-header">
+            <span class="cs-topper">Raw Output</span>
+            <h2 class="cs-title">The Cinematic Vault</h2>
+            <p class="cs-text" style="max-width: 45rem;">
+                A comprehensive archive of our unscripted, high-fidelity visual productions. Every frame is captured with intent on Canon cinema glass and processed through a rigorous DaVinci Resolve color pipeline to pull raw emotion out of the machine.
+            </p>
+            <div class="vault-specs">
+                <div class="vault-spec-badge">10-Bit XF-AVC</div>
+                <div class="vault-spec-badge">Canon RF Glass</div>
+                <div class="vault-spec-badge">Bespoke Color</div>
+            </div>
+        </div>
+
+        <!-- Trusted By Section -->
+        <div class="trusted-by">
+            <span class="trusted-label">Trusted By Industry Leaders</span>
+            <div class="logo-reel">
+                <a href="https://delrecords.com/" target="_blank" rel="noopener" aria-label="Del Records">
+                    <img src="/assets/images/del-records-logo.png" alt="Del Records" class="client-logo" loading="lazy" decoding="async">
+                </a>
+                <a href="https://www.theexoticsnetwork.com/" target="_blank" rel="noopener" aria-label="The Exotics Network">
+                    <img src="/assets/images/exotics-network-logo.webp" alt="The Exotics Network" class="client-logo" loading="lazy" decoding="async">
+                </a>
+                <a href="https://www.instagram.com/27_carcollection/" target="_blank" rel="noopener" aria-label="27 Car Collection">
+                    <img src="/assets/images/27 Car Collection.png" alt="27 Car Collection" class="client-logo" loading="lazy" decoding="async">
+                </a>
+                <a href="https://tocpublicrelations.com/" target="_blank" rel="noopener" aria-label="TOC Public Relations">
+                    <img src="/assets/images/tocpr-logo-full-2.png" alt="TOC Public Relations" class="client-logo" loading="lazy" decoding="async">
+                </a>
+            </div>
+        </div>
+
+        <!-- Master Video Grid -->
+        <div class="video-grid">
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/4259595657034ed8f91b5e41b1c54f60/iframe" loading="lazy" title="Cinematic Portfolio Video" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/2e589edcf37a26fd0e08ebf114aa5e40/iframe" loading="lazy" title="Cinematic Portfolio Video" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/7a69b6ea2597e3e57929c32b6e2e90b4/iframe?poster=https%3A%2F%2Fcustomer-p2750f0weugyzc3g.cloudflarestream.com%2F7a69b6ea2597e3e57929c32b6e2e90b4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D32s%26height%3D600"
+                loading="lazy"
+                style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                allowfullscreen="true" ></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/4d599d1ee6c5e6752aa73e20103ee2bb/iframe" loading="lazy" title="Cinematic Portfolio Video" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/475f5cd0e2f9aad88623a1c6f02ffcdf/iframe?poster=https%3A%2F%2Fcustomer-p2750f0weugyzc3g.cloudflarestream.com%2F475f5cd0e2f9aad88623a1c6f02ffcdf%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D4s%26height%3D600"
+                 loading="lazy"
+                 style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                allowfullscreen="true" ></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/d01c11451f94ebbd75dd8d138f43fa9e/iframe?poster=https%3A%2F%2Fcustomer-p2750f0weugyzc3g.cloudflarestream.com%2Fd01c11451f94ebbd75dd8d138f43fa9e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D6s%26height%3D600"
+                 loading="lazy"
+                style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                allowfullscreen="true" ></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/e05a37661c041140518ae8d3bb424c3e/iframe" loading="lazy" title="Cinematic Portfolio Video" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/a6901bf147fd7249359a17018d0a51d8/iframe?poster=https%3A%2F%2Fcustomer-p2750f0weugyzc3g.cloudflarestream.com%2Fa6901bf147fd7249359a17018d0a51d8%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D26s%26height%3D600"
+                loading="lazy"
+                style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                allowfullscreen="true" ></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://customer-p2750f0weugyzc3g.cloudflarestream.com/76f31f784684bf080842ce082a92c52f/iframe" loading="lazy" title="Cinematic Portfolio Video" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+
+    {% include 'sections/cta.html' %}
+{% endblock %}

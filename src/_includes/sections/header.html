@@ -1,0 +1,42 @@
+<!-- ============================================ -->
+<!--                  Navigation                  -->
+<!-- ============================================ -->
+
+<header id="cs-navigation" style="display: flex; align-items: center;">
+    <div class="cs-container" style="display: flex; align-items: center; width: 100%; height: 100%;">
+        
+        <!-- Image Logo Restored and Centered -->
+        <a href="/" class="cs-logo" aria-label="Vitesse Home" style="text-decoration: none; display: flex; align-items: center; margin: 0 auto 0 0; padding: 0; height: auto;">
+            <img class="cs-logo-light" src="/assets/images/deep2.png" alt="Vitesse Logo" style="height: 28px; width: auto; display: none !important; margin: 0; padding: 0; object-fit: contain;">
+            <img class="cs-logo-dark" src="/assets/images/deep1.png" alt="Vitesse Logo" style="height: 28px; width: auto; margin: 0; padding: 0; display: block; object-fit: contain;">
+        </a>
+        
+        <nav class="cs-nav" aria-label="main navigation" style="display: flex; align-items: center;">
+            <button class="cs-toggle" id="cs-toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-label="mobile menu toggle" aria-haspopup="menu">
+                <span class="cs-box" aria-hidden="true">
+                    <span class="cs-line cs-line1" aria-hidden="true"></span>
+                    <span class="cs-line cs-line2" aria-hidden="true"></span>
+                    <span class="cs-line cs-line3" aria-hidden="true"></span>
+                </span>
+            </button>
+            <div class="cs-ul-wrapper" id="cs-ul-wrapper" inert>
+                <ul id="cs-expanded" class="cs-ul">
+                    <li class="cs-li">
+                        <a href="/" class="cs-li-link {% if page.url == '/' %} cs-active {% endif %}">Home</a>
+                    </li>
+                    <li class="cs-li">
+                        <a href="/portfolio/" class="cs-li-link {% if page.url == '/portfolio/' %} cs-active {% endif %}">The Archive</a>
+                    </li>
+                    <li class="cs-li">
+                        <a href="/studio/" class="cs-li-link {% if page.url == '/studio/' %} cs-active {% endif %}">Studio</a>
+                    </li>
+                    <li class="cs-li cs-hide-on-desktop">
+                        <a href="/contact/" class="cs-li-link {% if page.url == '/contact/' %} cs-active {% endif %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <a href="/contact/" class="cs-button-solid cs-nav-button" style="margin-left: 2rem;">Book A Shoot</a>
+    </div>
+</header>

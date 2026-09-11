@@ -1,0 +1,310 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// CODESTITCH GLOBAL STYLES - VITESSE STUDIO
+// ─────────────────────────────────────────────────────────────────────────────
+
+@media only screen and (min-width: 0px) {
+    :root {
+        --primary: #ffffff;            
+        --primaryLight: #e5e5e5;       
+        --secondary: #000000;          
+        --secondaryLight: #111111;     
+        --headerColor: #ffffff;        
+        --bodyTextColor: #e5e5e5;      
+        --bodyTextColorWhite: #ffffff; 
+
+        --dark: #000000;               
+        --medium: #0a0a0a;              
+        --accent: #111111;              
+        --abyss: #050505;               
+
+        --topperFontSize: clamp(0.75rem, 1.5vw, 0.875rem);
+        --headerFontSize: clamp(2.5rem, 6vw, 4.5rem); 
+        --bodyFontSize: 1rem;
+        --sectionPadding: clamp(4rem, 8vw, 7rem) 1rem;
+
+        --headerFont: "Syncopate", "Monument Extended", "Helvetica Neue", "Arial Black", sans-serif;
+        --bodyFont: "Inter", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    html, body {
+        margin: 0; padding: 0; overflow-x: hidden;
+        font-family: var(--bodyFont);
+        font-size: 100%;
+        background-color: var(--dark);
+        color: var(--bodyTextColor);
+    }
+
+    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .cs-topper {
+        font-size: var(--topperFontSize);
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: inherit;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        color: #888888;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .cs-title {
+        font-size: var(--headerFontSize);
+        font-weight: 900;
+        line-height: 1.05em;
+        text-align: inherit;
+        max-width: 50rem;
+        margin: 0 0 1.5rem 0;
+        color: var(--headerColor);
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+    }
+
+    .cs-text {
+        font-size: var(--bodyFontSize);
+        line-height: 1.6em;
+        text-align: inherit;
+        width: 100%;
+        max-width: 45rem;
+        margin: 0;
+        color: var(--bodyTextColor);
+    }
+}
+
+@media only screen and (min-width: 0px) {
+    .skip { z-index: -1111111; position: absolute; top: 0; left: 0; opacity: 0; }
+
+    .cs-button-solid {
+        z-index: 1; position: relative; display: inline-block;
+        background-color: #fff; width: auto;
+        padding: 1.25rem 2.5rem; text-decoration: none;
+        text-transform: uppercase; font-size: 0.875rem;
+        line-height: 1em; font-weight: 800; letter-spacing: 0.15em;
+        border-radius: 0; overflow: hidden;
+        color: #000; transition: color 0.3s; transition-delay: 0.1s; text-align: center;
+        &:hover { color: #fff; &:before { width: 100%; } }
+        &:before {
+            z-index: -1; position: absolute; top: 0; left: 0; content: ""; opacity: 1;
+            display: block; background-color: #000; height: 100%; width: 0;
+            transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+    }
+
+    .cs-button-outline {
+        z-index: 1; position: relative; display: inline-block; width: auto;
+        padding: 1.25rem 2.5rem; text-decoration: none; text-transform: uppercase;
+        font-size: 0.875rem; line-height: 1em; font-weight: 800; letter-spacing: 0.15em;
+        border: 1px solid #fff; border-radius: 0;
+        color: #fff; transition: color 0.3s; transition-delay: 0.1s; text-align: center;
+        &:hover { color: #000; &:before { width: 100%; } }
+        &:before {
+            z-index: -1; position: absolute; top: 0; left: 0; content: ""; opacity: 1;
+            display: block; background-color: #fff; height: 100%; width: 0;
+            transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+    }
+
+    .cs-color { color: var(--primary); }
+    .cs-bold { font-weight: 700; }
+    .cs-hide-on-mobile { display: none !important; }
+    .cs-dark, .dark { display: block !important; }
+    .cs-light, .light { display: none !important; }
+}
+
+@media only screen and (min-width: 64rem) {
+    .cs-hide-on-mobile { display: block !important; }
+    .cs-hide-on-desktop { display: none !important; }
+}
+
+@media only screen and (min-width: 0px) {
+    h1, h2, h3, h4, h5, h6 { font-family: var(--headerFont); line-height: 1.1em; color: var(--headerColor); }
+    p, li, a { font-size: 1rem; line-height: 1.5em; }
+    p, li { color: var(--bodyTextColor); }
+    a { color: #fff; }
+    a, button { &:hover { cursor: pointer; } }
+}
+
+@media only screen and (min-width: 0px) {
+    @font-face {
+        font-style: normal; font-family: "Roboto"; font-weight: 400; font-display: swap;
+        src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"), url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff");
+    }
+    @font-face {
+        font-style: normal; font-family: "Roboto"; font-weight: 700; font-display: swap;
+        src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"), url("/assets/fonts/roboto-v29-latin-700.woff") format("woff");
+    }
+    @font-face {
+        font-style: normal; font-family: "Roboto"; font-weight: 900; font-display: swap;
+        src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"), url("/assets/fonts/roboto-v29-latin-900.woff") format("woff");
+    }
+}
+
+/* Hard Hiding Dark Mode Toggle */
+#dark-mode-toggle { display: none !important; }
+
+/* Mobile Navigation */
+@media only screen and (max-width: 1023.5px) {
+    body.cs-open { overflow: hidden; }
+    #cs-navigation {
+        width: 100%; box-sizing: border-box; padding: 1rem 1.5rem;
+        background-color: #000; border-bottom: 1px solid #111;
+        position: fixed; z-index: 10000;
+        &:before {
+            content: ""; width: 0%; height: 100vh; background: rgba(0, 0, 0, 0.95);
+            opacity: 0; display: block; position: absolute; top: 100%; right: 0;
+            z-index: -11; transition: width 0.5s, opacity 0.3s;
+            -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        }
+        &.cs-active {
+            &:before { width: 100%; opacity: 1; }
+            .cs-ul-wrapper { opacity: 1; transform: scaleX(1); transition-delay: 0.2s; }
+            .cs-li { opacity: 1; transform: translateX(0); }
+        }
+        .cs-container { width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+        .cs-logo {
+            width: 40%; max-width: 150px; height: 100%; margin: 0 auto 0 0;
+            padding: 0; display: flex; justify-content: flex-start; align-items: center; z-index: 10;
+            img { width: 100%; height: 100%; object-fit: contain; object-position: left; filter: grayscale(0) brightness(100%); }
+        }
+        .cs-toggle {
+            width: clamp(2.75rem, 6vw, 3rem); height: clamp(2.75rem, 6vw, 3rem);
+            margin: 0 0 0 auto; background-color: transparent; border: none;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .cs-active {
+            .cs-line1 { top: 50%; transform: translate(-50%, -50%) rotate(225deg); }
+            .cs-line2 { top: 50%; transform: translate(-50%, -50%) translateY(0) rotate(-225deg); transform-origin: center; }
+            .cs-line3 { opacity: 0; bottom: 100%; }
+        }
+        .cs-box { width: clamp(1.5rem, 2vw, 1.75rem); height: clamp(0.875rem, 1.5vw, 1rem); position: relative; }
+        .cs-line { width: 100%; height: 2px; background-color: #fff; position: absolute; left: 50%; transform: translateX(-50%); }
+        .cs-line1 { top: 0; transition: transform 0.5s, top 0.3s, left 0.3s; animation-fill-mode: forwards; transform-origin: center; }
+        .cs-line2 { top: 50%; transform: translateX(-50%) translateY(-50%); transition: top 0.3s, left 0.3s, transform 0.5s; animation-fill-mode: forwards; }
+        .cs-line3 { bottom: 0; transition: bottom 0.3s, opacity 0.3s; }
+        .cs-ul-wrapper {
+            height: 100vh; background-color: #0a0a0a; opacity: 0; position: absolute;
+            top: 100%; right: 0; left: auto; z-index: -1; overflow: hidden; transform: scaleX(0);
+            transition: transform 0.4s, opacity 0.3s; transform-origin: top right;
+        }
+        .cs-ul {
+            width: auto; min-width: 40%; height: 65vh; margin: 0;
+            padding: 3rem clamp(1.75rem, 3vw, 2.5rem) 2rem 4rem;
+            display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 1.25rem; overflow: scroll;
+        }
+        .cs-li {
+            text-align: right; list-style: none; width: 100%; margin-right: 0; opacity: 0; transform: translateX(-2.5rem);
+            transition: transform 0.6s, opacity 0.9s;
+            &:nth-of-type(1) { transition-delay: 0.05s; }
+            &:nth-of-type(2) { transition-delay: 0.1s; }
+            &:nth-of-type(3) { transition-delay: 0.15s; }
+            &:nth-of-type(4) { transition-delay: 0.2s; }
+        }
+        .cs-li-link {
+            font-size: clamp(1rem, 2.5vw, 1.5rem); line-height: 1.2em; text-decoration: none; margin: 0;
+            padding: 0.25rem; color: #fff; display: inline-block; position: relative; text-transform: uppercase; font-weight: 700;
+            &:before { content: ""; width: 100%; height: 1px; background: currentColor; opacity: 1; display: none; position: absolute; bottom: -2px; left: 0; }
+            &.cs-active:before { display: block; }
+        }
+        .cs-button-solid { display: none; }
+    }
+}
+
+/* Desktop Navigation */
+@media only screen and (min-width: 1024px) {
+    #cs-navigation {
+        width: 100%; box-sizing: border-box; padding: 0 2rem; background-color: #000; border-bottom: 1px solid #111;
+        position: fixed; z-index: 10000; height: 5rem; display: flex; align-items: center;
+        .cs-container { width: 100%; max-width: 90rem; margin: auto; display: flex; justify-content: flex-end; align-items: center; gap: 2rem; }
+        .cs-toggle { display: none; }
+        .cs-logo {
+            width: 18.4%; max-width: 300px; height: 35px; margin: 0 auto 0 0; padding: 0;
+            display: flex; justify-content: flex-start; align-items: center; z-index: 100;
+            img { width: 100%; height: 100%; object-fit: contain; object-position: left; filter: grayscale(0) brightness(100%); }
+        }
+        .cs-ul { width: 100%; margin: 0; padding: 0; display: flex; justify-content: flex-start; align-items: center; gap: clamp(1.25rem, 2.6vw, 2.25rem); }
+        .cs-li { list-style: none; padding: 2rem 0; flex: none; }
+        .cs-li-link {
+            font-size: clamp(0.75rem, 1vw, 0.875rem); line-height: 1.5em; text-decoration: none; margin: 0;
+            color: #aaa; display: block; position: relative; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; transition: color 0.3s;
+            &:hover { color: #fff; &:before { width: 100%; } }
+            &.cs-active:before { width: 100%; }
+            &:before {
+                content: ""; width: 0%; height: 2px; background: #fff; opacity: 1; display: block; position: absolute; bottom: 0; left: 0; transition: width 0.3s;
+            }
+        }
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CTA SECTION STYLING (FIXES THE BROKEN IMAGE LAYOUT)
+───────────────────────────────────────────────────────────────────────────── */
+@media only screen and (min-width: 0px) {
+    #cta-51 {
+        padding: var(--sectionPadding);
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        .cs-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cs-content {
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .cs-title { color: #fff; }
+        .cs-text {
+            margin-bottom: 2.5rem;
+            color: #e5e5e5;
+            opacity: 0.9;
+        }
+
+        .cs-picture {
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 100%;
+                background: #000;
+                opacity: 0.65;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                filter: grayscale(30%);
+            }
+        }
+    }
+}

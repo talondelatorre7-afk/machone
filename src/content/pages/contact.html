@@ -1,0 +1,322 @@
+---
+title: "Book a Shoot | VITESSE"
+description: "Contact Vitesse to schedule your next high-performance visual production in Southern California."
+permalink: "/contact/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+    <style>
+        /* ============================================ */
+        /*              PAGE OVERRIDES                  */
+        /* ============================================ */
+        body { background: #000; }
+        
+        /* CONTACT SECTION STYLING */
+        #cs-contact-265 { 
+            background: #000; 
+            color: #fff; 
+            /* Fluid padding: smaller on mobile, larger on desktop to clear header */
+            padding-top: clamp(8rem, 15vw, 12rem);
+            padding-bottom: var(--sectionPadding);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        #cs-contact-265 .cs-container {
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 4rem; 
+            max-width: 80rem; 
+            margin: auto;
+        }
+
+        @media (min-width: 64rem) {
+            #cs-contact-265 .cs-container { grid-template-columns: 1.5fr 1fr; gap: 6rem; }
+        }
+
+        #cs-contact-265 .cs-topper {
+            color: #888;
+        }
+
+        #cs-contact-265 .cs-title { 
+            color: #fff; 
+            margin-bottom: 1.5rem; 
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            font-family: var(--headerFont);
+            letter-spacing: -0.02em;
+        }
+        
+        #cs-contact-265 .cs-text { 
+            color: #aaa; 
+            max-width: 35rem; 
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* ============================================ */
+        /*           BRUTALIST FORM STYLING             */
+        /* ============================================ */
+        #cs-form-265 { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+        }
+
+        @media (min-width: 48rem) {
+            #cs-form-265 { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+        }
+        
+        /* Forces these elements to span the full width of the form grid */
+        .cs-label-message, 
+        .opt-in-wrapper, 
+        #submit-btn,
+        #form-status {
+            grid-column: 1 / -1 !important;
+            width: 100%;
+        }
+        
+        #cs-form-265 label { 
+            color: #fff; 
+            font-family: var(--headerFont);
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 0.1em; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cs-form-265 input, 
+        #cs-form-265 textarea {
+            width: 100%; 
+            padding: 1.25rem; 
+            background: #0a0a0a; 
+            border: 1px solid #222;
+            color: #fff; 
+            margin-top: 0.75rem; 
+            border-radius: 0; 
+            font-family: var(--bodyFont);
+            font-size: 1rem; 
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+            appearance: none;
+        }
+
+        #cs-form-265 input:focus, 
+        #cs-form-265 textarea:focus { 
+            outline: none; 
+            border-color: #fff; 
+        }
+
+        /* SMS OPT-IN FIXES */
+        .opt-in-wrapper { margin-top: 0.5rem; }
+        
+        .opt-in-label { 
+            display: flex !important; 
+            flex-direction: row !important;
+            gap: 1rem !important; 
+            align-items: flex-start !important; 
+            color: #888 !important; 
+            font-family: var(--bodyFont) !important;
+            font-size: 0.875rem !important; 
+            text-transform: none !important; 
+            font-weight: 400 !important; 
+            cursor: pointer; 
+            letter-spacing: 0 !important;
+        }
+
+        .opt-in-label input[type="checkbox"] { 
+            width: 18px !important; 
+            height: 18px !important; 
+            margin: 0.25rem 0 0 0 !important; 
+            flex-shrink: 0;
+            appearance: auto !important;
+        }
+
+        .opt-in-label span {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        /* SUBMIT BUTTON FIX */
+        #submit-btn {
+            background: #fff;
+            color: #000;
+            border: 1px solid #fff;
+            padding: 1.25rem;
+            text-align: center;
+            font-family: var(--headerFont);
+            font-weight: 800;
+            font-size: 0.875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* RIGHT COLUMN (CONTACT INFO) */
+        .cs-right-section { 
+            padding-top: 2rem; 
+            border-top: 1px solid #222; 
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; /* Clean, uniform spacing between blocks */
+        }
+
+        @media (min-width: 64rem) {
+            .cs-right-section { 
+                border-top: none; 
+                border-left: 1px solid #222; 
+                padding-left: 4rem; 
+                padding-top: 0; 
+                justify-content: flex-start;
+            }
+        }
+        
+        .cs-info-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cs-header { 
+            font-family: var(--headerFont); 
+            text-transform: uppercase; 
+            color: #555; 
+            display: block; 
+            margin-bottom: 0.75rem; 
+            font-size: 0.875rem; 
+            letter-spacing: 0.1em;
+        }
+        
+        .cs-link { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 1.125rem; 
+            line-height: 1.5;
+            transition: color 0.3s;
+        }
+
+        .cs-link:hover { color: #aaa; }
+
+        /* FORM STATUS ALERTS */
+        #form-status { 
+            font-weight: 700; 
+            text-align: center; 
+            display: none; 
+            padding: 1rem;
+            border: 1px solid transparent;
+            font-family: var(--bodyFont);
+        }
+        .status-success { color: #fff; border-color: #10b981 !important; background: rgba(16, 185, 129, 0.1); } 
+        .status-error { color: #fff; border-color: #ef4444 !important; background: rgba(239, 68, 68, 0.1); }   
+    </style>
+{% endblock %}
+
+{% block body %}
+    <!-- ============================================ -->
+    <!--                  CONTACT                     -->
+    <!-- ============================================ -->
+    <section id="cs-contact-265">
+        <div class="cs-container">
+            <div class="cs-left-section">
+                <div class="cs-content" style="margin-bottom: 3rem;">
+                    <span class="cs-topper">Operations</span>
+                    <h2 class="cs-title">Lock In The Pursuit</h2>
+                    <p class="cs-text">
+                        Tell us about your vehicle, location, and the scope of the production. We will review the logistics and reach out to lock in your shoot dates.
+                    </p>
+                </div>
+
+                <form id="cs-form-265">
+                    <label>
+                        Full Name
+                        <input required type="text" name="name" placeholder="John Doe">
+                    </label>
+                    <label>
+                        Email Address
+                        <input required type="email" name="email" placeholder="name@company.com">
+                    </label>
+                    <label>
+                        Phone Number
+                        <input required type="tel" name="phone" placeholder="(555) 555-5555">
+                    </label>
+                    <label>
+                        Vehicle / Project Type
+                        <input required type="text" name="business-type" placeholder="e.g. Ferrari SF90 Shoot">
+                    </label>
+                    
+                    <label class="cs-label-message">
+                        Project Scope (Rollers, static, location, etc.)
+                        <textarea required name="message" rows="6" placeholder="Tell us exactly what we are shooting..."></textarea>
+                    </label>
+                    
+                    <div class="opt-in-wrapper">
+                        <label class="opt-in-label">
+                            <input type="checkbox" name="SMS_Opt_In" required>
+                            <span>I agree to receive SMS communications from Vitesse regarding my inquiry. I understand I can reply STOP to opt out at any time. Message and data rates may apply.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn">Submit Request</button>
+                    <div id="form-status"></div>
+                </form>
+            </div>
+
+            <div class="cs-right-section">
+                <div class="cs-info-block">
+                    <span class="cs-header">Direct Line</span>
+                    <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
+                    <a class="cs-link" href="tel:{{ client.phoneForTel }}" style="margin-top: 0.5rem;">{{ client.phoneFormatted }}</a>
+                </div>
+                
+                <div class="cs-info-block">
+                    <span class="cs-header">Headquarters</span>
+                    <p class="cs-link">
+                        Chino, California <br>
+                        Serving Southern California
+                    </p>
+                </div>
+
+                <div class="cs-info-block">
+                    <span class="cs-header">Social</span>
+                    <a class="cs-link" href="https://instagram.com/vitesse.vx" target="_blank" rel="noopener">@vitesse.vx</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form UI Testing Script -->
+    <script>
+        document.getElementById('cs-form-265').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const submitBtn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+            
+            submitBtn.textContent = 'Transmitting...';
+            submitBtn.disabled = true;
+            statusDiv.style.display = 'none';
+            statusDiv.className = '';
+
+            // Simulated network delay
+            setTimeout(() => {
+                statusDiv.textContent = 'Message sent successfully! We will be in touch shortly.';
+                statusDiv.classList.add('status-success');
+                statusDiv.style.display = 'block';
+                
+                submitBtn.textContent = 'Submit Request';
+                submitBtn.disabled = false;
+                e.target.reset();
+            }, 1000);
+        });
+    </script>
+{% endblock %}

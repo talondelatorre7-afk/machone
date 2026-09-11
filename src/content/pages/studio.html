@@ -1,0 +1,225 @@
+---
+title: "The Studio | VITESSE"
+description: "Meet the directors and explore the hardware behind Vitesse."
+permalink: "/studio/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/critical.css" />
+
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/assets/css/local.css"></noscript>
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css" />
+    {% endif %}
+
+    <style>
+        /* ============================================ */
+        /*           STUDIO / ABOUT MANIFESTO           */
+        /* ============================================ */
+        #vitesse-manifesto {
+            padding-top: clamp(8rem, 15vw, 12rem);
+            padding-bottom: var(--sectionPadding);
+            background-color: var(--dark);
+        }
+
+        /* Perfectly Centered Headers */
+        .studio-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 6rem;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .studio-header .cs-title {
+            margin: 0 0 1.5rem 0;
+            width: 100%;
+        }
+
+        /* The 50/50 Editorial Split */
+        .manifesto-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 64rem) {
+            .manifesto-container { grid-template-columns: 1fr 1fr; gap: 6rem; }
+        }
+
+        .manifesto-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border: 1px solid #222;
+        }
+
+        .manifesto-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .manifesto-h3 {
+            font-family: var(--headerFont);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.1;
+        }
+
+        .manifesto-p {
+            color: #aaa;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin: 0 0 1.5rem 0;
+        }
+        
+        .manifesto-p:last-of-type { margin: 0; }
+
+        /* ============================================ */
+        /*           THE ARSENAL (SPEC SHEET)           */
+        /* ============================================ */
+        #vitesse-arsenal {
+            padding: var(--sectionPadding);
+            background-color: #050505;
+            border-top: 1px solid #111;
+        }
+
+        .arsenal-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .arsenal-top {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            border-top: 2px solid #333;
+            padding-top: 2rem;
+        }
+
+        @media (min-width: 48rem) {
+            .spec-grid { grid-template-columns: repeat(2, 1fr); gap: 4rem 2rem; }
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-title {
+            font-family: var(--headerFont);
+            font-size: 1.25rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-desc {
+            color: #888;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <!-- ============================================ -->
+    <!--                 THE DIRECTORS                -->
+    <!-- ============================================ -->
+    <section id="vitesse-manifesto">
+        <div class="studio-header">
+            <span class="cs-topper">The Directors</span>
+            <h1 class="cs-title">Talon & James</h1>
+        </div>
+
+        <div class="manifesto-container">
+            <div class="manifesto-content">
+                <h3 class="manifesto-h3">We don't make videos. We make art.</h3>
+                <p class="manifesto-p">
+                    VITESSE was forged from a mutual obsession with automotive engineering and raw cinema. After collaborating on everything from a base model Alfa Romeo to a Ferrari SF90 XX Spider, we realized the automotive media industry was becoming entirely manufactured.
+                </p>
+                <p class="manifesto-p">
+                    Our philosophy separates us from every other visual agency. We do not use shot lists. We do not write scripts. We never use AI. Every production is entirely sporadic by design. When you meticulously storyboard a vehicle, you lose its soul. We operate on instinct, reacting to the machine and the environment in real-time to capture untamed momentum. The result is an organic, uncompromising narrative that cannot be manufactured in a studio.
+                </p>
+                <p class="manifesto-p">
+                    On set, the division of labor is absolute. James commands the pursuit vehicle, directs the set, and captures raw stills and BTS on a Canon 250D, while Talon locks in the heavy Canon R5 C on the tracking rig to pull the cinematic plates.
+                </p>
+            </div>
+            <!-- Swap this with a hard BTS photo of you and James on set, or a shot of the truck -->
+            <img class="manifesto-image" src="/assets/images/08.webp" alt="Talon and James on set" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  THE ARSENAL                 -->
+    <!-- ============================================ -->
+    <section id="vitesse-arsenal">
+        <div class="arsenal-container">
+            <div class="arsenal-top">
+                <span class="cs-topper">Hardware Specs</span>
+                <h2 class="cs-title" style="margin:0;">The Arsenal</h2>
+            </div>
+            
+            <div class="spec-grid">
+                
+                <div class="spec-item">
+                    <h4 class="spec-title">A-Cam: Canon EOS R5 C</h4>
+                    <p class="spec-desc">Our primary cinema weapon. Pushing heavy 10-bit XF-AVC files that offer massive dynamic range for aggressive, high-contrast color grading.</p>
+                </div>
+
+                <div class="spec-item">
+                    <h4 class="spec-title">Pursuit: Tilta Hydra Alien Pro</h4>
+                    <p class="spec-desc">Hard-mounted to the GMC Canyon chase vehicle, providing mechanical shock-absorption to isolate the camera from road vibration at highway speeds.</p>
+                </div>
+
+                <div class="spec-item">
+                    <h4 class="spec-title">B-Cam: Canon 250D</h4>
+                    <p class="spec-desc">Operated by James on set to capture high-fidelity BTS and secondary still photography while the primary tracking rig is engaged.</p>
+                </div>
+
+                <div class="spec-item">
+                    <h4 class="spec-title">Action: GoPro Hero 13 Black</h4>
+                    <p class="spec-desc">Deployed in high-risk zones and tight chassis mounts where traditional cinema glass cannot fit, capturing intense POV and mechanical action.</p>
+                </div>
+
+                <div class="spec-item">
+                    <h4 class="spec-title">Texture: 2000s Digicam</h4>
+                    <p class="spec-desc">An early 2000s Canon point-and-shoot utilized intentionally to cut nostalgic, raw, low-fi textures into our ultra-crisp 4K timelines.</p>
+                </div>
+
+                <div class="spec-item">
+                    <h4 class="spec-title">Post: DaVinci Resolve</h4>
+                    <p class="spec-desc">Where the art is finalized. We push our raw logs through a heavy-duty color pipeline, crushing the blacks and retaining highlights for a bespoke cinematic aesthetic.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Includes your Vitesse CTA automatically -->
+    {% include 'sections/cta.html' %}
+{% endblock %}
