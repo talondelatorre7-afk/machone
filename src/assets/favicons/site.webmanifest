@@ -1,15 +1,15 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Mach One",
+  "short_name": "MOACI",
   "icons": [
     {
-      "src": "/assets/favicons/web-app-manifest-192x192.png",
+      "src": "/assets/favicons/web-app-manifest-192x192.png?v=202609112342",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/assets/favicons/web-app-manifest-512x512.png",
+      "src": "/assets/favicons/web-app-manifest-512x512.png?v=202609112342",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
